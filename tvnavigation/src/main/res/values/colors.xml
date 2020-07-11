@@ -1,0 +1,88 @@
+<resources>
+    <color name="fastlane_background">#0C0234</color>
+    <color name="nav_closed_background">#0A0432</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_opc72">#B8FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="alpha_black">#99606060</color>
+    <color name="dot_background">#105FA7</color>
+
+
+    <color name="splash_color_background">#14005A</color>
+    <color name="view_color">#FFFFFF</color>
+    <color name="color_white_app">#FEFFFE</color>
+    <color name="rv_item_keypad">#04113D</color>
+    <color name="rv_item_keypad_text">#F8F8FA</color>
+
+
+    <color name="email_font_color">#0C0234</color>
+    <color name="hint_color">#660C0234</color>
+    <color name="color_app_blue">#141414</color>
+    <color name="sign_up_button">#FFC300</color>
+    <color name="green">#269b24</color>
+    <color name="amber">#FFC300</color>
+    <color name="focus_link_item">#F7C444</color>
+
+    <color name="navigation_menu_focus_color">#FFD60A</color>
+    <color name="navigation_menu_focus_out_color">#A9A9A9</color>
+    <color name="orange">#ff9800</color>
+    <color name="colorDarkOrange">#F19000</color>
+    <color name="rv_link_item_text">#AFB2C5</color>
+
+    <color name="lightBlue">#03a9f4</color>
+
+
+    <color name="sub_biology">#FE5F9B</color>
+    <color name="sub_chemistry">#FF5E5E</color>
+    <color name="sub_physics">#209AF7</color>
+    <color name="sub_maths">#AC3FFF</color>
+    <color name="sub_all">#3AB344</color>
+    <color name="user_text_unselected">#757899</color>
+    <color name="seekProgressBuffer">#ADADAD</color>
+    <color name="seekProgressBuffer1">#33FFFFFF</color>
+
+    <color name="deep_purple_a700">#6200ea</color> <!-- Use with white text -->
+    <!-- Use with white text -->
+    <color name="grey_100">#f5f5f5</color>
+    <color name="grey_1000_b">#000000</color> <!-- Use with white text -->
+    <color name="grey_1000_w">#ceccd5</color>
+    <color name="red">#FA5C66</color>
+    <!-- Use with black text -->
+    <color name="yellow">#FFEB3B</color> <!-- Use with black text -->
+    <color name="default_background_color">#8800FF</color>
+    <color name="default_glow_color">#885BFC</color>
+
+    <color name="player_background">#6A000000</color>
+
+    <!-- test detail screen colors -->
+    <color name="titleColor">#FFFFFF</color>
+    <color name="subjectColor">#CCFFFFFF</color> <!-- 80% opacity-->
+    <color name="recValueColor">#FFFFFF</color>
+    <color name="embiumsColor">#FFA800</color>
+
+    <color name="item_test_default_bg">#0EFFFFFF</color> <!-- 6% opacity-->
+    <color name="item_test_focused_bg">#14005a</color>
+    <color name="item_test_subTitle">#99FFFFFF</color> <!-- 60% opacity-->
+    <color name="text_see_test">#B8FFFFFF</color> <!-- 72% opacity-->
+    <color name="test_view_color">#45FFFFFF</color> <!-- 27% opacity-->
+    <color name="test_detail_view_color">#38FFFFFF</color> <!-- 21% opacity-->
+    <color name="text_percentage">#BCFAAE</color>
+    <color name="btn_test_unselected">#7e5c3c</color>
+    <!-- 70% opacity white-->
+
+
+    <color name="color_social_blue">#4B90FF</color>
+    <!-- 70% opacity black-->
+
+
+    <color name="colorProgressPurple">#9E3BF0</color>
+    <color name="colorProgressRed">#FD3E3B</color>
+    <color name="colorProgressBlue">#1A7BCD</color>
+
+    <!--  bg color for lines in achieve  -->
+    <color name="line_grad_1">#00FCBC</color>
+    <color name="line_grad_2">#0B1740</color>
+    <color name="line_grad_3">#0C0335</color>
+
+</resources>

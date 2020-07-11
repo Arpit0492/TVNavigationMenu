@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Movies">Movies</string>
+    <string name="Shows">Shows</string>
+    <string name="PodCasts">PodCasts</string>
+    <string name="Music">Music</string>
+    <string name="News">News</string>
+    <string name="Settings">Settings</string>
+</resources>

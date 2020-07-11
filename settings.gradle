@@ -1,0 +1,3 @@
+include ':tvnavigation'
+include ':app'
+rootProject.name = "TV Menu Navigation"

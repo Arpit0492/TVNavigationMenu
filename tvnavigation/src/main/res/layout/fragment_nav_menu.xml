@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/open_nav_CL"
+        android:background="@color/green"
+        android:layout_width="wrap_content"
+        android:padding="@dimen/dimens_5dp"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/movies_IB"
+            android:layout_width="@dimen/dimens_22dp"
+            android:layout_height="@dimen/dimens_22dp"
+            android:background="@color/transparent"
+            android:layout_marginTop="100dp"
+            android:focusable="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:nextFocusUp="@id/movies_IB"
+            android:nextFocusLeft="@id/movies_IB"
+            android:nextFocusDown="@id/shows_IB"
+            android:tag="@string/Movies"
+            app:srcCompat="@drawable/ic_movie_unselected" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/shows_IB"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
+            android:background="@color/transparent"
+            android:focusable="false"
+            android:nextFocusUp="@id/movies_IB"
+            android:nextFocusDown="@id/podcasts_IB"
+            android:nextFocusLeft="@id/shows_IB"
+            android:tag="@string/Shows"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movies_IB"
+            app:srcCompat="@drawable/ic_shows_unselected" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/podcasts_IB"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
+            android:background="@color/transparent"
+            android:focusable="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:nextFocusUp="@id/shows_IB"
+            android:nextFocusDown="@id/music_IB"
+            android:nextFocusLeft="@id/podcasts_IB"
+            android:tag="@string/PodCasts"
+            app:layout_constraintTop_toBottomOf="@id/shows_IB"
+            app:srcCompat="@drawable/ic_podcast_unselected" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/music_IB"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
+            android:background="@color/transparent"
+            android:focusable="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:nextFocusUp="@id/podcasts_IB"
+            android:nextFocusDown="@id/news_IB"
+            android:nextFocusLeft="@id/music_IB"
+            android:tag="@string/News"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/podcasts_IB"
+            app:srcCompat="@drawable/ic_music_unselected" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/news_IB"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
+            android:background="@color/transparent"
+            android:focusable="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:nextFocusUp="@id/music_IB"
+            android:nextFocusDown="@id/settings_IB"
+            android:nextFocusLeft="@id/news_IB"
+            android:tag="@string/Music"
+            app:layout_constraintTop_toBottomOf="@id/music_IB"
+            app:srcCompat="@drawable/ic_news_unselected" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/settings_IB"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/transparent"
+            android:focusable="false"
+            android:nextFocusUp="@id/news_IB"
+            android:nextFocusDown="@id/settings_IB"
+            android:nextFocusLeft="@id/settings_IB"
+            android:tag="@string/Settings"
+            app:layout_constraintTop_toBottomOf="@id/news_IB"
+            app:srcCompat="@drawable/ic_settings_unselected" />
+
+        <TextView
+            android:id="@+id/settings_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_17dp"
+            android:fontFamily="casual"
+            android:text="@string/Settings"
+            android:textColor="#CECCD5"
+            android:textSize="@dimen/dimens_20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/settings_IB"
+            app:layout_constraintStart_toEndOf="@id/settings_IB"
+            app:layout_constraintTop_toTopOf="@id/settings_IB" />
+
+        <TextView
+            android:id="@+id/music_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_17dp"
+            android:fontFamily="casual"
+            android:text="@string/News"
+            android:textColor="#CECCD5"
+            android:textSize="@dimen/dimens_20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/music_IB"
+            app:layout_constraintStart_toEndOf="@id/music_IB"
+            app:layout_constraintTop_toTopOf="@id/music_IB" />
+
+        <TextView
+            android:id="@+id/news_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_17dp"
+            android:fontFamily="casual"
+            android:text="@string/Music"
+            android:textColor="#CECCD5"
+            android:textSize="@dimen/dimens_20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/news_IB"
+            app:layout_constraintStart_toEndOf="@id/news_IB"
+            app:layout_constraintTop_toTopOf="@id/news_IB" />
+
+        <TextView
+            android:id="@+id/podcasts_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_17dp"
+            android:fontFamily="casual"
+            android:text="@string/PodCasts"
+            android:textColor="#CECCD5"
+            android:textSize="@dimen/dimens_20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/podcasts_IB"
+            app:layout_constraintStart_toEndOf="@id/podcasts_IB"
+            app:layout_constraintTop_toTopOf="@id/podcasts_IB" />
+
+        <TextView
+            android:id="@+id/shows_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_17dp"
+            android:fontFamily="casual"
+            android:text="@string/Shows"
+            android:textColor="#CECCD5"
+            android:textSize="@dimen/dimens_20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/shows_IB"
+            app:layout_constraintStart_toEndOf="@id/shows_IB"
+            app:layout_constraintTop_toTopOf="@id/shows_IB" />
+
+        <TextView
+            android:id="@+id/movies_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_17dp"
+            android:fontFamily="casual"
+            android:text="@string/Movies"
+            android:textColor="#CECCD5"
+            android:textSize="@dimen/dimens_20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/movies_IB"
+            app:layout_constraintStart_toEndOf="@id/movies_IB"
+            app:layout_constraintTop_toTopOf="@id/movies_IB" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
