@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.androijo.tvnavigation.interfaces.FragmentChangeListener
 import com.androijo.tvnavigation.interfaces.NavigationStateListener
+import com.androijo.tvnavigation.utils.Constants
 import kotlinx.android.synthetic.main.fragment_nav_menu.*
 
 class NavigationMenu : Fragment() {
@@ -33,12 +34,12 @@ class NavigationMenu : Fragment() {
     private lateinit var navigationToHostListener: NavigationStateListener
 
     private var TAG_CLASS_NAME = NavigationMenu::class.java.toString()
-    private val movies = activity?.getString(R.string.Movies)
-    private val shows = activity?.getString(R.string.Shows)
-    private val news = activity?.getString(R.string.News)
-    private val music = activity?.getString(R.string.Music)
-    private val podcasts = activity?.getString(R.string.PodCasts)
-    private val settings = activity?.getString(R.string.Settings)
+    private val movies = Constants.nav_menu_movies
+    private val shows = Constants.nav_menu_shows
+    private val news = Constants.nav_menu_news
+    private val music = Constants.nav_menu_music
+    private val podcasts = Constants.nav_menu_podcasts
+    private val settings = Constants.nav_menu_settings
     private var lastSelectedMenu: String? = movies
     private var moviesAllowedToGainFocus = false
     private var settingsAllowedToGainFocus = false
@@ -93,13 +94,13 @@ class NavigationMenu : Fragment() {
                 if (isNavigationOpen()) {
                     setFocusedView(movies_IB, R.drawable.ic_movie_selected)
                     setMenuNameFocusView(movies_TV, true)
-//                    focusIn(binding.searchIB, 0)
+                    focusIn(movies_IB, 0)
                 }
             } else {
                 if (isNavigationOpen()) {
                     setOutOfFocusedView(movies_IB, R.drawable.ic_movie_unselected)
                     setMenuNameFocusView(movies_TV, false)
-//                    focusOut(binding.searchIB, 0)
+                    focusOut(movies_IB, 0)
                 }
             }
         }
@@ -112,7 +113,7 @@ class NavigationMenu : Fragment() {
                         navigationToHostListener.onStateChanged(false, lastSelectedMenu)
                     }
                     KeyEvent.KEYCODE_ENTER -> {
-//                        lastSelectedMenu = NAV_NAME_SEARCH
+                        lastSelectedMenu = movies
                         fragmentChangeListener.switchFragment(movies)
                         closeNav()
                     }
@@ -122,7 +123,7 @@ class NavigationMenu : Fragment() {
                         switchUserAllowedToGainFocus = true
                     }
                     KeyEvent.KEYCODE_DPAD_CENTER -> {
-//                        lastSelectedMenu = NAV_NAME_SEARCH
+                        lastSelectedMenu = movies
                         fragmentChangeListener.switchFragment(movies)
                         closeNav()
                     }
@@ -146,13 +147,13 @@ class NavigationMenu : Fragment() {
                 if (isNavigationOpen()) {
                     setFocusedView(shows_IB, R.drawable.ic_shows_selected)
                     setMenuNameFocusView(shows_TV, true)
-//                    focusIn(binding.learnIB, 0)
+                    focusIn(shows_IB, 0)
                 }
             } else {
                 if (isNavigationOpen()) {
                     setOutOfFocusedView(shows_IB, R.drawable.ic_shows_unselected)
                     setMenuNameFocusView(shows_TV, false)
-//                    focusOut(binding.learnIB, 0)
+                    focusOut(shows_IB, 0)
                 }
             }
         }
@@ -199,14 +200,14 @@ class NavigationMenu : Fragment() {
                 if (isNavigationOpen()) {
                     setFocusedView(podcasts_IB, R.drawable.ic_podcast_selected)
                     setMenuNameFocusView(podcasts_TV, true)
-//                    focusIn(binding.practiceIB, 0)
+                    focusIn(podcasts_IB, 0)
                 }
 
             } else {
                 if (isNavigationOpen()) {
                     setOutOfFocusedView(podcasts_IB, R.drawable.ic_podcast_unselected)
                     setMenuNameFocusView(podcasts_TV, false)
-//                    focusOut(binding.practiceIB, 0)
+                    focusOut(podcasts_IB, 0)
                 }
             }
 
@@ -252,14 +253,14 @@ class NavigationMenu : Fragment() {
                 if (isNavigationOpen()) {
                     setFocusedView(music_IB, R.drawable.ic_music_selected)
                     setMenuNameFocusView(music_TV, true)
-//                    focusIn(binding.practiceIB, 0)
+                    focusIn(music_IB, 0)
                 }
 
             } else {
                 if (isNavigationOpen()) {
-                    setOutOfFocusedView(music_IB, R.drawable.ic_music_selected)
+                    setOutOfFocusedView(music_IB, R.drawable.ic_music_unselected)
                     setMenuNameFocusView(music_TV, false)
-//                    focusOut(binding.practiceIB, 0)
+                    focusOut(music_IB, 0)
                 }
             }
 
@@ -307,13 +308,13 @@ class NavigationMenu : Fragment() {
                 if (isNavigationOpen()) {
                     setFocusedView(settings_IB, R.drawable.ic_settings_selected)
                     setMenuNameFocusView(settings_TV, true)
-//                    focusIn(binding.profileIB, 0)
+                    focusIn(settings_IB, 0)
                 }
             } else {
                 if (isNavigationOpen()) {
                     setOutOfFocusedView(settings_IB, R.drawable.ic_settings_unselected)
                     setMenuNameFocusView(settings_TV, false)
-//                    focusOut(binding.profileIB, 0)
+                    focusOut(settings_IB, 0)
                 }
             }
         }
@@ -349,13 +350,13 @@ class NavigationMenu : Fragment() {
                 if (isNavigationOpen()) {
                     setFocusedView(news_IB, R.drawable.ic_news_selected)
                     setMenuNameFocusView(news_TV, true)
-//                    focusIn(binding.profileIB, 0)
+                    focusIn(news_IB, 0)
                 }
             } else {
                 if (isNavigationOpen()) {
                     setOutOfFocusedView(news_IB, R.drawable.ic_news_unselected)
                     setMenuNameFocusView(news_TV, false)
-//                    focusOut(binding.profileIB, 0)
+                    focusOut(news_IB, 0)
                 }
             }
         }
@@ -427,7 +428,7 @@ class NavigationMenu : Fragment() {
             view.setTextColor(
                 ContextCompat.getColor(
                     context!!,
-                    R.color.navigation_menu_focus_color
+                    R.color.app_background
                 )
             )
         } else
@@ -549,12 +550,12 @@ class NavigationMenu : Fragment() {
 
         if (visibility == View.GONE) {
             menuTextAnimationDelay = 0//200 //reset
-            movies_IB.visibility = visibility
-            shows_IB.visibility = visibility
-            news_IB.visibility = visibility
-            music_IB.visibility = visibility
-            podcasts_IB.visibility = visibility
-            settings_IB.visibility = visibility
+            movies_TV.visibility = visibility
+            shows_TV.visibility = visibility
+            news_TV.visibility = visibility
+            music_TV.visibility = visibility
+            podcasts_TV.visibility = visibility
+            settings_TV.visibility = visibility
         } else {
             animateMenuNamesEntry(movies_IB, visibility, 1)
         }

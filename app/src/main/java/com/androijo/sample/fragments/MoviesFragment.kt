@@ -19,8 +19,8 @@ class MoviesFragment : RowsSupportFragment() {
     private val dataList = ArrayList<String>()
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         dataList.add("1")
         dataList.add("2")
@@ -28,7 +28,7 @@ class MoviesFragment : RowsSupportFragment() {
         dataList.add("4")
         dataList.add("5")
 
-        createRows(dataList)
+        createRows()
 
         onItemViewSelectedListener = OnItemViewSelectedListener {itemViewHolder, item, rowViewHolder, row ->
             val indexOfItem = ((row as CardListRow).adapter as ArrayObjectAdapter).indexOf(item)
@@ -48,16 +48,16 @@ class MoviesFragment : RowsSupportFragment() {
         }
     }
 
-    private fun createRows(data: List<String>) {
-        var rowIndex = 1
-        data.forEach {
+    private fun createRows() {
+        for(rowIndex in 1..5){
             mRowsAdapter.add(createNewRow(rowIndex))
-            rowIndex += 1
         }
     }
 
     private fun createNewRow(rowIndex: Int): Row {
-        val presenterSelector = activity?.baseContext?.let { CardPresenterSelector(it) }
+        val presenterSelector = activity?.baseContext?.let {
+            CardPresenterSelector(it)
+        }
         val adapter = ArrayObjectAdapter(presenterSelector)
         for (data in dataList) {
             adapter.add(data)

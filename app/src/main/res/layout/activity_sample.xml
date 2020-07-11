@@ -8,13 +8,6 @@
     android:animateLayoutChanges="true"
     android:background="@color/black"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout
-        android:id="@+id/main_FL"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activities.SampleActivity"
-        tools:deviceIds="tv"
-        tools:ignore="MergeRootFrame" />
 
     <FrameLayout
         android:id="@+id/nav_fragment_placeholder"
@@ -37,5 +30,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/fragment_nav_menu" />
+
+    <FrameLayout
+        android:id="@+id/main_FL"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="35dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

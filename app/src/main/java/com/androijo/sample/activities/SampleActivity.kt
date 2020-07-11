@@ -6,12 +6,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.androijo.sample.R
-import com.androijo.sample.Utils.Constants
 import com.androijo.sample.interfaces.NavigationMenuCallback
 import com.androijo.sample.fragments.*
-import com.androijo.tvnavigation.FragmentChangeListener
 import com.androijo.tvnavigation.NavigationMenu
-import com.androijo.tvnavigation.NavigationStateListener
+import com.androijo.tvnavigation.interfaces.FragmentChangeListener
+import com.androijo.tvnavigation.interfaces.NavigationStateListener
+import com.androijo.tvnavigation.utils.Constants
 import kotlinx.android.synthetic.main.activity_sample.*
 
 class SampleActivity : FragmentActivity(), NavigationStateListener, FragmentChangeListener,
@@ -33,11 +33,11 @@ class SampleActivity : FragmentActivity(), NavigationStateListener, FragmentChan
     /**
      * communication from left-side navigation to right-side content
      */
-    override fun onStateChanged(expanded: Boolean, lastSelected: String) {
+    override fun onStateChanged(expanded: Boolean, lastSelected: String?) {
 
     }
 
-    override fun switchFragment(fragmentName: String) {
+    override fun switchFragment(fragmentName: String?) {
         when (fragmentName) {
             Constants.nav_menu_movies -> {
                 fragmentReplacer(main_FL.id, MoviesFragment())

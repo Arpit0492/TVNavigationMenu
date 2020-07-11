@@ -1,4 +1,4 @@
-package com.androijo.sample.Utils
+package com.androijo.tvnavigation.utils
 
 
 object Constants {

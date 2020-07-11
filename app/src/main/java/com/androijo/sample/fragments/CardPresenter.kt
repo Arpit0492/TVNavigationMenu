@@ -27,11 +27,14 @@ class CardPresenter(context: Context) :
     override fun onCreateView(): BaseCardView {
         val cardView = BaseCardView(context, null, R.style.Widget_Leanback_BaseCardViewStyle)
         cardView.isFocusable = true
-        cardView.addView(LayoutInflater.from(context).inflate(R.layout.card_subject, null))
+        cardView.addView(LayoutInflater.from(context).inflate(R.layout.card_subject, null, false))
         return cardView
     }
 
     override fun onBindViewHolder(card: Any, cardView: BaseCardView) {
+        val data = card as String
+        val textView = cardView.findViewById<TextView>(R.id.cardName)
+        textView.text = data
 
     }
 
