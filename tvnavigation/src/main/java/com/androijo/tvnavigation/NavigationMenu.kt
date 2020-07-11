@@ -22,6 +22,8 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.androijo.tvnavigation.interfaces.FragmentChangeListener
+import com.androijo.tvnavigation.interfaces.NavigationStateListener
 import kotlinx.android.synthetic.main.fragment_nav_menu.*
 
 class NavigationMenu : Fragment() {
@@ -31,13 +33,13 @@ class NavigationMenu : Fragment() {
     private lateinit var navigationToHostListener: NavigationStateListener
 
     private var TAG_CLASS_NAME = NavigationMenu::class.java.toString()
-    private val movies = getString(R.string.Movies)
-    private val shows = getString(R.string.Shows)
-    private val news = getString(R.string.News)
-    private val music = getString(R.string.Music)
-    private val podcasts = getString(R.string.PodCasts)
-    private val settings = getString(R.string.Settings)
-    private var lastSelectedMenu: String = movies
+    private val movies = activity?.getString(R.string.Movies)
+    private val shows = activity?.getString(R.string.Shows)
+    private val news = activity?.getString(R.string.News)
+    private val music = activity?.getString(R.string.Music)
+    private val podcasts = activity?.getString(R.string.PodCasts)
+    private val settings = activity?.getString(R.string.Settings)
+    private var lastSelectedMenu: String? = movies
     private var moviesAllowedToGainFocus = false
     private var settingsAllowedToGainFocus = false
     private var musicAllowedToGainFocus = false
@@ -493,7 +495,7 @@ class NavigationMenu : Fragment() {
 
     }
 
-    private fun unHighlightMenuSelections(lastSelectedMenu: String) {
+    private fun unHighlightMenuSelections(lastSelectedMenu: String?) {
         if (!lastSelectedMenu.equals(movies, true)) {
             setOutOfFocusedView(movies_IB, R.drawable.ic_movie_unselected)
             setMenuNameFocusView(movies_TV, false)
@@ -520,7 +522,7 @@ class NavigationMenu : Fragment() {
         }
     }
 
-    private fun highlightMenuSelection(lastSelectedMenu: String) {
+    private fun highlightMenuSelection(lastSelectedMenu: String?) {
         when (lastSelectedMenu) {
             movies -> {
                 setFocusedView(movies_IB, R.drawable.ic_movie_selected)
