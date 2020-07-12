@@ -538,7 +538,7 @@ class NavigationMenu : Fragment() {
             view.visibility = visibility
             val animate = AnimationUtils.loadAnimation(context, R.anim.slide_in_left_menu_name)
             view.startAnimation(animate)
-            menuTextAnimationDelay = 50
+            menuTextAnimationDelay = 100
             when (viewCode) {
                 1 -> {
                     animateMenuNamesEntry(shows_TV, visibility, viewCode + 1)
