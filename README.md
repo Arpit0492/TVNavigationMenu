@@ -1,2 +1,2 @@
 # TVNavigation
-An Android TV navigation inspired by Netflix.
+An Android TV navigation library inspired by Netflix.
