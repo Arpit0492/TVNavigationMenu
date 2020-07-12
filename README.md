@@ -10,6 +10,6 @@ Because I feel the Pain of Android TV Development :D Cheers!!
 
 
 [![](https://jitpack.io/v/Arpit0492/TVNavigationMenu.svg)](https://jitpack.io/#Arpit0492/TVNavigationMenu)
-[![Navigation Open](nav_open.png)]
-[![Navigation Open](nav_open_2.png)]
-[![Navigation Closed](nav_closed.png)]
+![Navigation Open](nav_open.png)
+![Navigation Open](nav_open_2.png)
+![Navigation Closed](nav_closed.png)
