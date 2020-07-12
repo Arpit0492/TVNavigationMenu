@@ -1,13 +1,12 @@
 package com.androijo.sample.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import androidx.leanback.app.RowsSupportFragment
-import androidx.leanback.widget.ArrayObjectAdapter
-import androidx.leanback.widget.HeaderItem
-import androidx.leanback.widget.OnItemViewSelectedListener
-import androidx.leanback.widget.Row
+import androidx.leanback.widget.*
+import com.androijo.sample.R
 import com.androijo.sample.interfaces.NavigationMenuCallback
 
 
@@ -18,22 +17,22 @@ class MoviesFragment : RowsSupportFragment() {
     private lateinit var navigationMenuCallback: NavigationMenuCallback
     private val dataList = ArrayList<String>()
 
+    init {
+        initAdapters()
+        initListeners()
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private fun initAdapters() {
+        adapter = mRowsAdapter
+    }
 
-        dataList.add("1")
-        dataList.add("2")
-        dataList.add("3")
-        dataList.add("4")
-        dataList.add("5")
-
-        createRows()
-
+    private fun initListeners() {
         onItemViewSelectedListener = OnItemViewSelectedListener {itemViewHolder, item, rowViewHolder, row ->
+            val indexOfRow = mRowsAdapter.indexOf(row)
+
             val indexOfItem = ((row as CardListRow).adapter as ArrayObjectAdapter).indexOf(item)
 
-            itemViewHolder.view.setOnKeyListener { v, keyCode, event ->
+            itemViewHolder?.view?.setOnKeyListener { v, keyCode, event ->
                 if (event.action == KeyEvent.ACTION_DOWN) {
                     when (keyCode) {
                         KeyEvent.KEYCODE_DPAD_LEFT -> {
@@ -46,6 +45,20 @@ class MoviesFragment : RowsSupportFragment() {
                 false
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        dataList.add("1")
+        dataList.add("2")
+        dataList.add("3")
+        dataList.add("4")
+        dataList.add("5")
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        createRows()
     }
 
     private fun createRows() {
@@ -62,7 +75,7 @@ class MoviesFragment : RowsSupportFragment() {
         for (data in dataList) {
             adapter.add(data)
         }
-        val headerItem = HeaderItem("Row $rowIndex")
+        val headerItem = HeaderItem("${getString(R.string.Movies)} Row $rowIndex")
         return CardListRow(headerItem, adapter)
     }
 
@@ -71,5 +84,21 @@ class MoviesFragment : RowsSupportFragment() {
         this.navigationMenuCallback = callback
     }
 
+    /**
+     * this function can put focus or select a specific item in a specific row
+     */
+    fun restoreSelection() {
+        setSelectedPosition(
+            0,
+            true,
+            object : ListRowPresenter.SelectItemViewHolderTask(0) {
+                override fun run(holder: Presenter.ViewHolder?) {
+                    super.run(holder)
+                    holder?.view?.postDelayed({
+                        holder.view.requestFocus()
+                    }, 10)
+                }
+            })
+    }
 
 }

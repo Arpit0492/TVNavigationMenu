@@ -31,7 +31,7 @@ class NavigationMenu : Fragment() {
 
 
     private lateinit var fragmentChangeListener: FragmentChangeListener
-    private lateinit var navigationToHostListener: NavigationStateListener
+    private lateinit var navigationStateListener: NavigationStateListener
 
     private var TAG_CLASS_NAME = NavigationMenu::class.java.toString()
     private val movies = Constants.nav_menu_movies
@@ -84,7 +84,7 @@ class NavigationMenu : Fragment() {
     private fun moviesListeners() {
 
         Log.i(
-            TAG_CLASS_NAME, "searchAllowedToGainFocus = $moviesAllowedToGainFocus" +
+            TAG_CLASS_NAME, "moviesAllowedToGainFocus = $moviesAllowedToGainFocus" +
                     "is search this last selected = ${lastSelectedMenu == movies}" +
                     "is search nav open = ${isNavigationOpen()}"
         )
@@ -110,7 +110,7 @@ class NavigationMenu : Fragment() {
                 when (keyCode) {
                     KeyEvent.KEYCODE_DPAD_RIGHT -> {
                         closeNav()
-                        navigationToHostListener.onStateChanged(false, lastSelectedMenu)
+                        navigationStateListener.onStateChanged(false, lastSelectedMenu)
                     }
                     KeyEvent.KEYCODE_ENTER -> {
                         lastSelectedMenu = movies
@@ -136,7 +136,7 @@ class NavigationMenu : Fragment() {
     private fun showsListeners() {
 
         Log.i(
-            TAG_CLASS_NAME, "learnAllowedToGainFocus = $showsAllowedToGainFocus" +
+            TAG_CLASS_NAME, "showsAllowedToGainFocus = $showsAllowedToGainFocus" +
                     "is learn this last selected = ${lastSelectedMenu == shows}" +
                     "is learn nav open = ${isNavigationOpen()}"
         )
@@ -163,7 +163,7 @@ class NavigationMenu : Fragment() {
                 when (keyCode) {
                     KeyEvent.KEYCODE_DPAD_RIGHT -> {
                         closeNav()
-                        navigationToHostListener.onStateChanged(false, lastSelectedMenu)
+                        navigationStateListener.onStateChanged(false, lastSelectedMenu)
                     }
                     KeyEvent.KEYCODE_ENTER -> {
                         lastSelectedMenu = shows
@@ -190,7 +190,7 @@ class NavigationMenu : Fragment() {
     private fun podcastsListeners() {
 
         Log.i(
-            TAG_CLASS_NAME, "practiceAllowedToGainFocus = $podcastsAllowedToGainFocus, " +
+            TAG_CLASS_NAME, "podcastsAllowedToGainFocus = $podcastsAllowedToGainFocus, " +
                     "is practice this last selected = ${lastSelectedMenu == podcasts}" +
                     "is practice nav open = ${isNavigationOpen()}"
         )
@@ -223,7 +223,7 @@ class NavigationMenu : Fragment() {
                 when (keyCode) {
                     KeyEvent.KEYCODE_DPAD_RIGHT -> {
                         closeNav()
-                        navigationToHostListener.onStateChanged(false, lastSelectedMenu)
+                        navigationStateListener.onStateChanged(false, lastSelectedMenu)
                     }
                     KeyEvent.KEYCODE_ENTER -> {
                         lastSelectedMenu = podcasts
@@ -243,7 +243,7 @@ class NavigationMenu : Fragment() {
 
     private fun musicListeners() {
         Log.i(
-            TAG_CLASS_NAME, "achieveAllowedToGainFocus = $settingsAllowedToGainFocus, " +
+            TAG_CLASS_NAME, "settingsAllowedToGainFocus = $settingsAllowedToGainFocus, " +
                     "is achieve this last selected = ${lastSelectedMenu == music}" +
                     "is achieve nav open = ${isNavigationOpen()}"
         )
@@ -276,7 +276,7 @@ class NavigationMenu : Fragment() {
                 when (keyCode) {
                     KeyEvent.KEYCODE_DPAD_RIGHT -> {
                         closeNav()
-                        navigationToHostListener.onStateChanged(false, lastSelectedMenu)
+                        navigationStateListener.onStateChanged(false, lastSelectedMenu)
                     }
                     KeyEvent.KEYCODE_ENTER -> {
                         lastSelectedMenu = music
@@ -299,7 +299,7 @@ class NavigationMenu : Fragment() {
 
         settings_IB.setOnFocusChangeListener { v, hasFocus ->
             Log.i(
-                TAG_CLASS_NAME, "profileAllowedToGainFocus = $musicAllowedToGainFocus" +
+                TAG_CLASS_NAME, "musicAllowedToGainFocus = $musicAllowedToGainFocus" +
                         "is profile this last selected = ${lastSelectedMenu == settings}" +
                         "is profile nav open = ${isNavigationOpen()}"
             )
@@ -324,7 +324,7 @@ class NavigationMenu : Fragment() {
                 when (keyCode) {
                     KeyEvent.KEYCODE_DPAD_RIGHT -> {
                         closeNav()
-                        navigationToHostListener.onStateChanged(false, lastSelectedMenu)
+                        navigationStateListener.onStateChanged(false, lastSelectedMenu)
                     }
                     KeyEvent.KEYCODE_ENTER -> {
                         lastSelectedMenu = settings
@@ -366,7 +366,7 @@ class NavigationMenu : Fragment() {
                 when (keyCode) {
                     KeyEvent.KEYCODE_DPAD_RIGHT -> {
                         closeNav()
-                        navigationToHostListener.onStateChanged(false, lastSelectedMenu)
+                        navigationStateListener.onStateChanged(false, lastSelectedMenu)
                     }
                     KeyEvent.KEYCODE_ENTER -> {
                         lastSelectedMenu = news
@@ -401,8 +401,8 @@ class NavigationMenu : Fragment() {
      * Setting animation when focus is lost
      */
     fun focusOut(v: View, position: Int) {
-        val scaleX = ObjectAnimator.ofFloat(v, "scaleX", 1.05f, 1.0f)
-        val scaleY = ObjectAnimator.ofFloat(v, "scaleY", 1.05f, 1.0f)
+        val scaleX = ObjectAnimator.ofFloat(v, "scaleX", 1.2f, 1f)
+        val scaleY = ObjectAnimator.ofFloat(v, "scaleY", 1.2f, 1f)
         val set = AnimatorSet()
         set.play(scaleX).with(scaleY)
         set.start()
@@ -412,8 +412,8 @@ class NavigationMenu : Fragment() {
      * Setting the animation when getting focus
      */
     fun focusIn(v: View, position: Int) {
-        val scaleX = ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.05f)
-        val scaleY = ObjectAnimator.ofFloat(v, "scaleY", 1.0f, 1.05f)
+        val scaleX = ObjectAnimator.ofFloat(v, "scaleX", 1f, 1.2f)
+        val scaleY = ObjectAnimator.ofFloat(v, "scaleY", 1f, 1.2f)
         val set = AnimatorSet()
         set.play(scaleX).with(scaleY)
         set.start()
@@ -444,7 +444,7 @@ class NavigationMenu : Fragment() {
         enableNavMenuViews(View.VISIBLE)
         val lp = FrameLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT)
         open_nav_CL.layoutParams = lp
-        navigationToHostListener.onStateChanged(true, lastSelectedMenu)
+        navigationStateListener.onStateChanged(true, lastSelectedMenu)
 
         when (lastSelectedMenu) {
 
@@ -557,7 +557,7 @@ class NavigationMenu : Fragment() {
             podcasts_TV.visibility = visibility
             settings_TV.visibility = visibility
         } else {
-            animateMenuNamesEntry(movies_IB, visibility, 1)
+            animateMenuNamesEntry(movies_TV, visibility, 1)
         }
 
     }
@@ -567,7 +567,7 @@ class NavigationMenu : Fragment() {
             view.visibility = visibility
             val animate = AnimationUtils.loadAnimation(context, R.anim.slide_in_left_menu_name)
             view.startAnimation(animate)
-            menuTextAnimationDelay = 0//50
+            menuTextAnimationDelay = 50
             when (viewCode) {
                 1 -> {
                     animateMenuNamesEntry(shows_TV, visibility, viewCode + 1)
@@ -595,7 +595,7 @@ class NavigationMenu : Fragment() {
     }
 
     fun setNavigationStateListener(callback: NavigationStateListener) {
-        this.navigationToHostListener = callback
+        this.navigationStateListener = callback
     }
 
     fun setSelectedMenu(navMenuName: String) {
