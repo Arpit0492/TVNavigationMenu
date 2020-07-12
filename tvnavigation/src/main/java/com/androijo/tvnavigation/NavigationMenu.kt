@@ -83,12 +83,6 @@ class NavigationMenu : Fragment() {
 
     private fun moviesListeners() {
 
-        Log.i(
-            TAG_CLASS_NAME, "moviesAllowedToGainFocus = $moviesAllowedToGainFocus" +
-                    "is search this last selected = ${lastSelectedMenu == movies}" +
-                    "is search nav open = ${isNavigationOpen()}"
-        )
-
         movies_IB.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 if (isNavigationOpen()) {
@@ -134,12 +128,6 @@ class NavigationMenu : Fragment() {
     }
 
     private fun showsListeners() {
-
-        Log.i(
-            TAG_CLASS_NAME, "showsAllowedToGainFocus = $showsAllowedToGainFocus" +
-                    "is learn this last selected = ${lastSelectedMenu == shows}" +
-                    "is learn nav open = ${isNavigationOpen()}"
-        )
 
         shows_IB.setOnFocusChangeListener { v, hasFocus ->
 
@@ -189,12 +177,6 @@ class NavigationMenu : Fragment() {
 
     private fun podcastsListeners() {
 
-        Log.i(
-            TAG_CLASS_NAME, "podcastsAllowedToGainFocus = $podcastsAllowedToGainFocus, " +
-                    "is practice this last selected = ${lastSelectedMenu == podcasts}" +
-                    "is practice nav open = ${isNavigationOpen()}"
-        )
-
         podcasts_IB.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 if (isNavigationOpen()) {
@@ -242,11 +224,6 @@ class NavigationMenu : Fragment() {
     }
 
     private fun musicListeners() {
-        Log.i(
-            TAG_CLASS_NAME, "settingsAllowedToGainFocus = $settingsAllowedToGainFocus, " +
-                    "is achieve this last selected = ${lastSelectedMenu == music}" +
-                    "is achieve nav open = ${isNavigationOpen()}"
-        )
 
         music_IB.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
@@ -298,12 +275,6 @@ class NavigationMenu : Fragment() {
     private fun settingsListeners() {
 
         settings_IB.setOnFocusChangeListener { v, hasFocus ->
-            Log.i(
-                TAG_CLASS_NAME, "musicAllowedToGainFocus = $musicAllowedToGainFocus" +
-                        "is profile this last selected = ${lastSelectedMenu == settings}" +
-                        "is profile nav open = ${isNavigationOpen()}"
-            )
-
             if (hasFocus) {
                 if (isNavigationOpen()) {
                     setFocusedView(settings_IB, R.drawable.ic_settings_selected)
@@ -588,7 +559,7 @@ class NavigationMenu : Fragment() {
         }, menuTextAnimationDelay.toLong())
     }
 
-    fun isNavigationOpen() = movies_IB.visibility == View.VISIBLE
+    private fun isNavigationOpen() = movies_TV.visibility == View.VISIBLE
 
     fun setFragmentChangeListener(callback: FragmentChangeListener) {
         this.fragmentChangeListener = callback
