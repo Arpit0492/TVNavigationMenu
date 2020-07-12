@@ -33,7 +33,7 @@ class NavigationMenu : Fragment() {
     private lateinit var fragmentChangeListener: FragmentChangeListener
     private lateinit var navigationStateListener: NavigationStateListener
 
-    private var TAG_CLASS_NAME = NavigationMenu::class.java.toString()
+    private var classTag = NavigationMenu::class.java.toString()
     private val movies = Constants.nav_menu_movies
     private val shows = Constants.nav_menu_shows
     private val news = Constants.nav_menu_news

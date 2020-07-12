@@ -2,12 +2,11 @@ package com.androijo.sample.activities
 
 import android.os.Bundle
 import android.view.animation.AnimationUtils
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.androijo.sample.R
-import com.androijo.sample.interfaces.NavigationMenuCallback
 import com.androijo.sample.fragments.*
+import com.androijo.sample.interfaces.NavigationMenuCallback
 import com.androijo.tvnavigation.NavigationMenu
 import com.androijo.tvnavigation.interfaces.FragmentChangeListener
 import com.androijo.tvnavigation.interfaces.NavigationStateListener
@@ -44,12 +43,7 @@ class SampleActivity : FragmentActivity(), NavigationStateListener, FragmentChan
      */
     override fun onStateChanged(expanded: Boolean, lastSelected: String?) {
         if (!expanded) {
-            nav_fragment.setBackgroundColor(
-                ContextCompat.getColor(
-                    this,
-                    R.color.yellow
-                )
-            )
+            nav_fragment.setBackgroundResource(R.drawable.ic_nav_bg_closed)
             nav_fragment.clearFocus()
 
             when (currentSelectedFragment) {
@@ -80,6 +74,7 @@ class SampleActivity : FragmentActivity(), NavigationStateListener, FragmentChan
     }
 
     override fun switchFragment(fragmentName: String?) {
+        nav_fragment.setBackgroundResource(R.drawable.ic_nav_bg_closed)
         when (fragmentName) {
             Constants.nav_menu_movies -> {
                 moviesFragment = MoviesFragment()
@@ -118,14 +113,13 @@ class SampleActivity : FragmentActivity(), NavigationStateListener, FragmentChan
 
         try {
             if (toShow) {
+                nav_fragment.setBackgroundResource(R.drawable.ic_nav_bg_open)
                 main_FL.clearFocus()
                 nav_fragment.requestFocus()
                 navEnterAnimation()
                 navMenuFragment.openNav()
             } else {
-                nav_fragment.setBackgroundColor(
-                    ContextCompat.getColor(this, R.color.yellow)
-                )
+                nav_fragment.setBackgroundResource(R.drawable.ic_nav_bg_closed)
                 nav_fragment.clearFocus()
                 main_FL.requestFocus()
                 navMenuFragment.closeNav()
